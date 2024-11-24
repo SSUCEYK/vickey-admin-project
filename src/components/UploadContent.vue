@@ -33,6 +33,10 @@
             description: this.description,
             thumbnail: this.thumbnail,
           });
+          
+          // 임시 데이터 처리 
+          console.log(`Uploading a content: ${this.title}, descrpt: ${this.description}, thumb: ${this.thumbnail}`);
+
           this.$router.push('/');
         } catch (error) {
           console.error('Upload failed:', error);
