@@ -28,12 +28,22 @@ const store = createStore({
       const contents = await response.json();
       commit('setContents', contents);
     },
+    // async fetchContentDetail(_, contentId) {
+    //   const response = await fetch(`/api/episodes/${contentId}`);
+    //   if (!response.ok) {
+    //     throw new Error(`Failed to fetch content with ID ${contentId}`);
+    //   }
+    //   return await response.json();
+    // },
     async fetchContentDetail(_, contentId) {
-      const response = await fetch(`/api/episodes/${contentId}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch content with ID ${contentId}`);
-      }
-      return await response.json();
+      return fetch(`http://3.37.105.22:8080/api/episodes/${contentId}`)
+          .then((response) => {
+              if (!response.ok) throw new Error(`Failed to fetch content with ID ${contentId}`);
+              return response.json();
+          })
+          .catch((error) => {
+              console.error(`Failed to load content detail: ${error.message}`);
+          });
     },
     async uploadContent(_, content) {
       await fetch('/api/episodes', {
