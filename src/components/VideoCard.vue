@@ -1,7 +1,7 @@
 <template>
   <div class="video-card">
     <img :src="video.url" alt="Video Thumbnail" class="video-thumbnail" />
-    <router-link :to="`/video/${video.id}`">{{ video.title }}</router-link>
+    <router-link :to="`/videos/${video.id}`">{{ video.title }}</router-link>
   </div>
 </template>
 

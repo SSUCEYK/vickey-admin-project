@@ -13,7 +13,7 @@
       </div>
 
       <!-- 새로운 콘텐츠 추가 버튼 -->
-      <button @click="$router.push('/upload-content')">새로운 콘텐츠 추가</button>
+      <button @click="$router.push('/upload-episode')">새로운 콘텐츠 추가</button>
       
       <!-- 로딩 중 메시지 표시 -->  
       <div v-if="loading">Loading...</div>

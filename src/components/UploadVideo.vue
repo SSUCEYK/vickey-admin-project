@@ -39,7 +39,7 @@ export default {
       console.log(`Video uploaded for content ${contentId}:`, uploadedVideo);
       
       // 업로드 후 해당 콘텐츠 상세 페이지로 리디렉션
-      this.$router.push(`/content/${contentId}`);
+      this.$router.push(`/episodes/${contentId}`);
     },
   },
 };

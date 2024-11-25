@@ -8,8 +8,8 @@ import UploadVideoPage from '../views/UploadVideoPage.vue';
 const routes = [
   { path: '/', component: Home },
   { path: '/login', component: Login },
-  { path: '/content/:id', component: ContentDetailPage },
-  { path: '/upload-content', component: UploadContentPage },  
+  { path: '/api/episodes/:contentId', component: ContentDetailPage },
+  { path: '/upload-episode', component: UploadContentPage },  
   { path: '/upload-video/:contentId', component: UploadVideoPage },  
 ];
 

@@ -2,13 +2,13 @@
     <!-- 콘텐츠 카드 클릭 시 상세 페이지로 이동 -->
     <div class="content-card" @click="goToContentDetail">
       <!-- 콘텐츠 썸네일 이미지 -->
-      <img :src="content.thumbnail" alt="Thumbnail" />
+      <img :src="content.thumbnailUrl" alt="Thumbnail" />
       <!-- 콘텐츠 제목 및 업데이트 날짜 -->
       <h3>{{ content.title }}</h3>
-      <p>{{ content.updatedAt }}</p>
+      <p>{{ content.releasedDate }}</p>
     </div>
   </template>
-  
+
   <script>
   export default {
     props: {
@@ -16,7 +16,8 @@
     },
     methods: {
       goToContentDetail() {
-        this.$router.push(`/content/${this.content.id}`);
+        console.log(this.content)
+        this.$router.push({path: `/api/episodes/${this.content.episodeId}`});
       },
     },
   };

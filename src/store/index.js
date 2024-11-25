@@ -14,11 +14,6 @@ const store = createStore({
     },
   },
   actions: {
-    async fetchContents({ commit }) {
-      const response = await fetch('/api/contents');
-      const contents = await response.json();
-      commit('setContents', contents);
-    },
     async login({ commit }, { email, password }) {
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -28,8 +23,20 @@ const store = createStore({
       commit('setUser', user);
       return user;
     },
+    async fetchContents({ commit }) {
+      const response = await fetch('/api/episodes');
+      const contents = await response.json();
+      commit('setContents', contents);
+    },
+    async fetchContentDetail(_, contentId) {
+      const response = await fetch(`/api/episodes/${contentId}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch content with ID ${contentId}`);
+      }
+      return await response.json();
+    },
     async uploadContent(_, content) {
-      await fetch('/api/contents', {
+      await fetch('/api/episodes', {
         method: 'POST',
         body: JSON.stringify(content),
       });
