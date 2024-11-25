@@ -4,18 +4,21 @@
     <div v-if="!content">Loading content...</div>
     <!-- 콘텐츠 상세 페이지 -->
     <div v-else>
-      <ContentDetail :content="content" />
+      <!-- <ContentDetail :content="content" /> -->
+      <VideoList :content="content" />
     </div>
   </div>
   </template>
   
   
 <script>
-import ContentDetail from '../components/ContentDetail.vue';
+import VideoList from '@/components/VideoList.vue';
+// import ContentDetail from '../components/ContentDetail.vue';
 
 export default {
   components: {
-    ContentDetail,
+    // ContentDetail,
+    VideoList,
   },
   data() {
     return {
