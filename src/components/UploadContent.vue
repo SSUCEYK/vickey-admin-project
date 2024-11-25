@@ -27,7 +27,7 @@
         <label>Released Date</label>
         <input type="date" v-model="releasedDate" required />
 
-        <button type="추가">Upload</button>
+        <button type="submit">Upload</button>
 
       </form>
     </div>
@@ -78,9 +78,9 @@
   };
   </script>
   
-  <style scoped>
+<style scoped>
 .upload-content {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;

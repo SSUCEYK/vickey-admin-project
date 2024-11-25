@@ -23,18 +23,19 @@ const store = createStore({
       commit('setUser', user);
       return user;
     },
-    async fetchContents({ commit }) {
-      const response = await fetch('/api/episodes');
-      const contents = await response.json();
-      commit('setContents', contents);
+    async fetchContents() {
+      return fetch(`http://3.37.105.22:8080/api/episodes`)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Failed to fetch contents`);
+        return response.json();
+      })
+      .catch((error) => {
+        console.error(`Failed to load content detail: ${error.message}`);
+      });
+      // const response = await fetch('/api/episodes');
+      // const contents = await response.json();
+      // commit('setContents', contents);
     },
-    // async fetchContentDetail(_, contentId) {
-    //   const response = await fetch(`/api/episodes/${contentId}`);
-    //   if (!response.ok) {
-    //     throw new Error(`Failed to fetch content with ID ${contentId}`);
-    //   }
-    //   return await response.json();
-    // },
     async fetchContentDetail(_, contentId) {
       return fetch(`http://3.37.105.22:8080/api/episodes/${contentId}`)
           .then((response) => {
@@ -45,14 +46,29 @@ const store = createStore({
               console.error(`Failed to load content detail: ${error.message}`);
           });
     },
+    async fetchVideos(_, content) {
+
+      console.log(content.episodeId)
+      const url = `http://3.37.105.22:8080/api/videos?episodeId=${content.episodeId}`;
+      console.log("URL:", url); // 최종 URL 출력
+
+      return fetch(url)
+          .then((response) => {
+              if (!response.ok) throw new Error(`Failed to fetch videos with ID ${content.episodeId}`);
+              return response.json();
+          })
+          .catch((error) => {
+              console.error(`Failed to load videos: ${error.message}`);
+          });
+    },
     async uploadContent(_, content) {
-      await fetch('/api/episodes', {
+      await fetch('/api/episodes/upload', {
         method: 'POST',
         body: JSON.stringify(content),
       });
     },
     async uploadVideo(_, video) {
-      await fetch('/api/videos', {
+      await fetch('/api/videos/upload', {
         method: 'POST',
         body: JSON.stringify(video),
       });

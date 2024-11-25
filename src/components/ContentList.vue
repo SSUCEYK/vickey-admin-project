@@ -1,28 +1,28 @@
 <template>
-  <!-- <div>Hello, Vue!</div> -->
-<div class="content-list">
-      <h1>내 콘텐츠</h1>
+  <div class="content-list">
+    <h1>내 콘텐츠</h1>
 
-      <!-- 콘텐츠 리스트를 그리드 형태로 표시 -->
-      <div class="content-grid">
-        <ContentCard 
-          v-for="content in episodes" 
-          :key="content.id" 
-          :content="content" 
-        />
-      </div>
+    <!-- 새로운 콘텐츠 추가 버튼 -->
+    <button @click="$router.push('/upload-episode')">새로운 콘텐츠 추가</button>
 
-      <!-- 새로운 콘텐츠 추가 버튼 -->
-      <button @click="$router.push('/upload-episode')">새로운 콘텐츠 추가</button>
-      
-      <!-- 로딩 중 메시지 표시 -->  
-      <div v-if="loading">Loading...</div>
+    <!-- 로딩 중 메시지 표시 -->  
+    <div v-if="loading">Loading...</div>
 
+
+    <!-- 콘텐츠 리스트를 그리드 형태로 표시 -->
+    <div class="content-grid">
+      <ContentCard 
+        v-for="content in episodes" 
+        :key="content.id" 
+        :content="content" 
+      />
     </div>
+
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import ContentCard from './ContentCard.vue'
 
 export default {
@@ -40,12 +40,15 @@ export default {
     async fetchEpisodes() {
       try {
         // API에서 데이터 가져오기
-        const response = await axios.get('http://3.37.105.22:8080/api/episodes');
-        this.episodes = response.data; // 응답 데이터로 episodes 배열 설정
+        this.episodes = await this.$store.dispatch('fetchContents');
+
         this.loading = false; // 로딩 완료
+
       } catch (error) {
+
         console.error('Error fetching episodes:', error);
         this.loading = false;
+        
       }
     },
   },

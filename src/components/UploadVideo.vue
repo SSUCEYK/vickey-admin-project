@@ -2,11 +2,15 @@
     <div class="upload-video">
       <h2>새로운 동영상 등록</h2>
       <form @submit.prevent="handleUpload">
+
         <label>Video Title</label>
         <input type="text" v-model="title" required />
+
         <label>Video URL</label>
         <input type="text" v-model="url" required />
+
         <button type="submit">Upload</button>
+        
       </form>
     </div>
   </template>
@@ -39,16 +43,15 @@ export default {
       console.log(`Video uploaded for content ${contentId}:`, uploadedVideo);
       
       // 업로드 후 해당 콘텐츠 상세 페이지로 리디렉션
-      this.$router.push(`/episodes/${contentId}`);
+      this.$router.push(`/api/episodes/${contentId}`);
     },
   },
 };
 </script>
 
 <style scoped>
-/* UploadContentPage.vue와 동일한 스타일을 적용 */
-.upload-content {
-  max-width: 500px;
+.upload-video {
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
