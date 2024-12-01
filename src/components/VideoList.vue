@@ -9,7 +9,10 @@
     <div v-if="loading">Loading...</div>
 
     <div class="video-grid">
-      <VideoCard v-for="video in videos" :key="video.episodeId" :video="video" />
+      <VideoCard 
+        v-for="video in videos" 
+          :key="video.episodeId" 
+          :video="video" />
     </div>
 
   </div>  
@@ -34,11 +37,11 @@
     };
     },
     created() {
-    this.fetchVideos();
+      this.fetchVideos();
   },
   methods: {
     navigateToUploadVideo() {
-      this.$router.push(`/upload-video/${this.content.episodeId}`);
+      this.$router.push(`/api/videos/upload/${this.content.episodeId}`);
     },
     async fetchVideos() {
       try {

@@ -2,6 +2,9 @@
 
 <template>
     <div class="content-detail">
+
+      <h2> 테스트 </h2>
+
       <!-- 콘텐츠 썸네일 이미지 -->
       <div class="thumbnail">
         <img :src="content.thumbnail" alt="Thumbnail" />

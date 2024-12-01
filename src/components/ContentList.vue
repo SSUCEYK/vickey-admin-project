@@ -3,11 +3,10 @@
     <h1>내 콘텐츠</h1>
 
     <!-- 새로운 콘텐츠 추가 버튼 -->
-    <button @click="$router.push('/upload-episode')">새로운 콘텐츠 추가</button>
+    <button @click="$router.push('/api/episodes/upload')">새로운 콘텐츠 추가</button>
 
     <!-- 로딩 중 메시지 표시 -->  
     <div v-if="loading">Loading...</div>
-
 
     <!-- 콘텐츠 리스트를 그리드 형태로 표시 -->
     <div class="content-grid">

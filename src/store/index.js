@@ -47,11 +47,8 @@ const store = createStore({
           });
     },
     async fetchVideos(_, content) {
-
-      console.log(content.episodeId)
-      const url = `http://3.37.105.22:8080/api/videos?episodeId=${content.episodeId}`;
-      console.log("URL:", url); // 최종 URL 출력
-
+      const url = `http://3.37.105.22:8080/api/videos/${content.episodeId}`; // 체크
+      console.log(url)
       return fetch(url)
           .then((response) => {
               if (!response.ok) throw new Error(`Failed to fetch videos with ID ${content.episodeId}`);
@@ -62,13 +59,13 @@ const store = createStore({
           });
     },
     async uploadContent(_, content) {
-      await fetch('/api/episodes/upload', {
+      await fetch('http://3.37.105.22:8080/api/episodes/upload', {
         method: 'POST',
         body: JSON.stringify(content),
       });
     },
     async uploadVideo(_, video) {
-      await fetch('/api/videos/upload', {
+      await fetch('http://3.37.105.22:8080/api/videos/upload', {
         method: 'POST',
         body: JSON.stringify(video),
       });

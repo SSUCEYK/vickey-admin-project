@@ -9,8 +9,8 @@ const routes = [
   { path: '/', component: Home },
   { path: '/login', component: Login },
   { path: '/api/episodes/:contentId', component: ContentDetailPage },
-  { path: '/upload-episode', component: UploadContentPage },  
-  { path: '/upload-video/:contentId', component: UploadVideoPage },  
+  { path: '/api/episodes/upload', component: UploadContentPage },  
+  { path: '/api/videos/upload/:contentId', component: UploadVideoPage },  
 ];
 
 const router = createRouter({
