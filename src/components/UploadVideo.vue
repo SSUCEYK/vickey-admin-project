@@ -47,30 +47,35 @@ export default {
       this.selectedFile = event.target.files[0]; // 파일 선택 시 이벤트
     },
     async uploadVideo() {
+
+      this.loading = true;
+
       if (!this.selectedFile) {
         alert("업로드할 파일을 선택하세요.");
         return;
       }
 
       try {
-        const contentId = this.$route.params.contentId;
+        const episodeId = this.$route.params.contentId;
 
         const formData = new FormData();
         formData.append("file", this.selectedFile);
 
         // S3 업로드 API 호출
-        await fetch(`http://3.37.105.22:8080/api/videos/upload`, {
+        await fetch(`http://3.37.105.22:8080/api/videos/upload/${episodeId}`, {
           method: "POST",
           body: formData,
+          mode: "cors",
         });
 
         alert("동영상 업로드 성공!");
-        this.$router.push(`/api/episodes/${contentId}`);
-        this.loading = false; // 로딩 완료
+        this.$router.push(`/api/episodes/${episodeId}`);
         
       } catch (error) {
         console.error("동영상 업로드 실패:", error);
         alert("동영상 업로드 중 오류가 발생했습니다.");
+
+      } finally {
         this.loading = false;
       }
     },
