@@ -1,6 +1,6 @@
 # vickey-admin-project
 
-### 임시 생성 Temp
+관리자용 웹페이지 (Vue)
 
 ## Project setup
 ```
