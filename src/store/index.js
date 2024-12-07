@@ -32,9 +32,6 @@ const store = createStore({
       .catch((error) => {
         console.error(`Failed to load content detail: ${error.message}`);
       });
-      // const response = await fetch('/api/episodes');
-      // const contents = await response.json();
-      // commit('setContents', contents);
     },
     async fetchContentDetail(_, contentId) {
       return fetch(`http://3.37.105.22:8080/api/episodes/${contentId}`)
@@ -47,7 +44,7 @@ const store = createStore({
           });
     },
     async fetchVideos(_, content) {
-      const url = `http://3.37.105.22:8080/api/videos/${content.episodeId}`; // 체크
+      const url = `http://3.37.105.22:8080/api/videos/${content.episodeId}`; // 체크 //episode 등록만 하고 video 등록 안한 상태
       console.log(url)
       return fetch(url)
           .then((response) => {

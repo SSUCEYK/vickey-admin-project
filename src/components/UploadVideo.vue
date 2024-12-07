@@ -80,30 +80,6 @@ export default {
       }
     },
   },
-  
-  // methods: {
-  //   async handleUpload() {
-  //     try {
-
-  //       const contentId = this.$route.params.contentId;
-
-  //       const uploadedVideo = {
-  //         url: this.url,
-  //       };
-        
-  //       await this.$store.dispatch('uploadVideo');
-  //       console.log(`Video uploaded for content ${contentId}:`, uploadedVideo);
-        
-  //       // 업로드 후 해당 콘텐츠 상세 페이지로 리디렉션
-  //       this.$router.push(`/api/episodes/${contentId}`);
-  //       this.loading = false; // 로딩 완료
-
-  //     } catch (error) {
-  //       console.error('Error uploading video', error);
-  //       this.loading = false;
-  //     }
-  //   },
-  // },
 };
 </script>
 
