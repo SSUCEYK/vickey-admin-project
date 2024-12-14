@@ -35,29 +35,19 @@
       videos: [], // API에서 가져온 데이터를 저장
       loading: true,
     };
-    },
-    created() {
-      this.fetchVideos();
+  },
+  async created() {
+    try {
+      this.videos = await this.$store.dispatch('fetchVideos', this.content);
+    } catch (error) {
+      console.error('Failed to fetch videos:', error);
+    } finally {
+      this.loading = false;
+    }
   },
   methods: {
     navigateToUploadVideo() {
       this.$router.push(`/api/videos/upload/${this.content.episodeId}`);
-    },
-    async fetchVideos() {
-      try {
-        // 데이터 확인
-        console.log(this.content)
-
-        // Vuex 액션 호출: 서버에서 this.content.id에 해당하는 videos를 모두 가져오는 api 요청: 응답 데이터로 videos 배열 설정
-        this.videos = await this.$store.dispatch('fetchVideos', this.content);
-
-        // 로딩 완료
-        this.loading = false; 
-
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-        this.loading = false;
-      }
     },
   },
   };
@@ -101,4 +91,5 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
 </style>

@@ -22,42 +22,40 @@
     },
   };
   </script>
-
+  
 <style scoped>
-/* 카드 기본 스타일 */
 .content-card {
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 카드에 그림자 추가 */
-  padding: 15px;
-  transition: transform 0.2s;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
   text-align: center;
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* 카드 호버 시 확대 효과 */
 .content-card:hover {
   transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 썸네일 이미지 스타일 */
-.thumbnail {
-  width: 100%; /* 카드의 너비에 맞게 */
-  height: 180px;
-  object-fit: cover; /* 이미지를 비율에 맞게 */
+.content-card img {
+  width: 100%;
+  height: 200px; /* 이미지 높이 고정 */
+  object-fit: cover;
   border-radius: 4px;
   margin-bottom: 10px;
 }
 
-/* 제목 스타일 */
-h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
+.content-card h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 5px 0;
 }
 
-/* 업데이트 날짜 텍스트 스타일 */
-.updated-at {
+.content-card p {
   font-size: 0.9rem;
-  color: #555;
+  color: #666;
 }
 </style>

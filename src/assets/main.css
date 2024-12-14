@@ -1,0 +1,29 @@
+/* 버튼 스타일 (글로벌 적용) */
+button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff; /* 텍스트 색상 */
+    background: linear-gradient(90deg, #333 0%, #000 100%); /* 검정 그라데이션 */
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* 그림자 효과 */
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    margin-bottom: 30px;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6); /* 호버 시 더 깊은 그림자 */
+    opacity: 0.9;
+  }
+  
+  button:disabled {
+    background: #444; /* 비활성화 상태에서 밝은 회색 */
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  
